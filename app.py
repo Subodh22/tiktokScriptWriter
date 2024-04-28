@@ -4,6 +4,7 @@ load_dotenv()
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
+OPENAI_API_KEY=st.secrets["OPENAI_API_KEY"]
 
 llm = ChatOpenAI(
     model="gpt-3.5-turbo"
