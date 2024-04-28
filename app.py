@@ -16,7 +16,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 chain= prompt | llm
-
+print("ok")
 response =chain.invoke({"input":"What is your name"})
 
 st.write(response["content"])
