@@ -9,7 +9,8 @@ OPENAI_API_KEY=st.secrets["OPENAI_API_KEY"]
 
 prompt = hub.pull("kanxu/tiktokscriptwriter")
 llm = ChatOpenAI(
-    model="gpt-4-turbo"
+    model="gpt-4-turbo",
+    temperature=0.8
 
 )
 
@@ -178,12 +179,15 @@ print("ok")
 def cutMyScript(user_input):
     response =chain.invoke({"question":user_input})
     return response
-user_input=st.text_area(label="question",height=200)
+if "response" not in st.session_state:
+     st.session_state["response"]=""
 
-if st.button("transform") :
+user_input=st.sidebar.text_area(label="Paste your script",height=300)
+ 
+if st.sidebar.button("Cut the Script") :
      if user_input!=" ":
-          st.write("Please type something")
-     response=cutMyScript(user_input)
-     st.write(response)
+          st.sidebar.write("Please type something")
+     st.session_state["response"]=cutMyScript(user_input)
+text_result=st.text_area(label="Script",value=st.session_state["response"],height=450)
  
 # st.write(response)
