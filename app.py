@@ -190,4 +190,4 @@ if st.sidebar.button("Cut the Script") :
      st.session_state["response"]=cutMyScript(user_input)
 text_result=st.text_area(label="Script",value=st.session_state["response"],height=450)
  
-# st.write(response)
+ 
